@@ -1,4 +1,3 @@
-from flask import Flask
 from flask_api import FlaskAPI
 
 from . import api, auth, platform, schedule, db
