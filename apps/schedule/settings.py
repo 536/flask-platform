@@ -1,5 +1,3 @@
-from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
-
 # 存储定时任务（默认是存储在内存中）
 # SCHEDULER_JOBSTORES = {'redis': RedisJobStore(host='x.x.x.x', password='xxx')}
 # SCHEDULER_JOBSTORES = {"default": SQLAlchemyJobStore(url="sqlite://")}
