@@ -8,6 +8,7 @@ from flask import Blueprint, session, redirect, request, abort, url_for
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 REDIRECT_URI = 'http://127.0.0.1:5000/auth/login'
+FEISHU_APP_URL = 'https://open.feishu.cn/open-apis/authen/v1/index?redirect_uri={REDIRECT_URI}&app_id={APPID}&state={STATE}'
 
 
 def get_access_token():
@@ -52,7 +53,7 @@ def login():
                 return abort(400, 'Error state in response.')
         else:
             session['STATE'] = ''.join(random.choice(string.ascii_letters) for _ in range(10))
-            return redirect(os.environ.get('FEISHU_APP_URL').format(
+            return redirect(FEISHU_APP_URL.format(
                 REDIRECT_URI=REDIRECT_URI,
                 APPID=os.environ.get('FEISHU_APP_ID'),
                 STATE=session['STATE'],
